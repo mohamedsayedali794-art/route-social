@@ -1,0 +1,52 @@
+
+<div class="min-h-screen bg-slate-100 flex items-center">
+  <div class="w-full max-w-7xl mx-auto px-4 lg:px-10 grid lg:grid-cols-2 gap-10 items-center py-8">
+
+    <!-- الشمال: الـ hero (بيختفي في الموبايل) -->
+    <section class="hidden lg:block">
+      <h1 class="text-6xl font-extrabold text-[#0b2a8a]">Route Posts</h1>
+      <p class="text-2xl text-slate-800 mt-4 max-w-md">
+        Connect with friends and the world around you on Route Posts.
+      </p>
+
+      <div class="mt-8 max-w-xl bg-white/70 border border-slate-200 rounded-2xl p-5 shadow-sm">
+        <p class="text-xs font-bold tracking-widest text-[#0b2a8a] uppercase">About Route Academy</p>
+        <h3 class="text-lg font-bold text-slate-900 mt-2">Egypt's Leading IT Training Center Since 2012</h3>
+        <p class="text-sm text-slate-600 mt-2 leading-relaxed">
+          Route Academy is the premier IT training center in Egypt, established in 2012.
+          We specialize in delivering high-quality training courses in programming,
+          web development, and application development.
+        </p>
+
+        <div class="grid grid-cols-3 gap-3 mt-4">
+          @for (s of stats; track s.label) {
+            <div class="rounded-xl border border-indigo-100 bg-indigo-50/60 px-3 py-2">
+              <div class="text-sm font-bold text-[#0b2a8a]">{{ s.value }}</div>
+              <div class="text-[10px] font-semibold uppercase text-slate-500">{{ s.label }}</div>
+            </div>
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- اليمين: الكارت -->
+    <section class="w-full max-w-sm mx-auto lg:ms-auto lg:me-0">
+      <div class="bg-white rounded-3xl shadow-sm p-5">
+
+        <!-- Tabs -->
+        <div class="flex bg-slate-100 rounded-xl p-1 mb-6">
+      <button type="submit"  routerLink="/authlayout/login" routerLinkActive="text-[#0b1f5c] font-bold bg-white shadow" class="flex-1 py-2 text-sm font-bold text-[#0b1f5c] bg-white rounded-lg shadow">
+        Login
+      </button>
+      <button type="submit" routerLink="/authlayout/signup" routerLinkActive="text-[#0b1f5c] font-bold bg-white shadow" class="flex-1 py-2 text-sm font-bold text-[#0b1f5c] bg-white rounded-lg shadow">
+        Register
+      </button>
+      </div>
+
+        <!-- هنا بيتعرض signup أو login -->
+        <router-outlet />
+      </div>
+    </section>
+
+  </div>
+</div>
