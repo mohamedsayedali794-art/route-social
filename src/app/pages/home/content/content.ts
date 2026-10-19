@@ -12,7 +12,6 @@ import { Post } from '../../../core/models/post';
   templateUrl: './content.html',
 })
 export class Content implements OnInit {
-
   postLists = signal<Post[]>([])
   constructor(private posts:Posts){}
    

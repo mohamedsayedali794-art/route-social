@@ -10,6 +10,7 @@ import { Notifications } from './layouts/mainlayout/notifications/notifications'
 import { NotFound } from './shared/components/not-found/not-found';
 
 export const routes: Routes = [
+  { path: '', redirectTo: 'mainlayout', pathMatch: 'full' },
     {path:'authlayout',component:Authlayout,children:[
         {path:'login',component:Login,title:'Route-social|login'},
         {path:'signup',component:Signup,title:'Route-social|signup'},
