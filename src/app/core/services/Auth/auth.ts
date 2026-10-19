@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
 import { environment } from '../../../../environments/environment';
@@ -11,7 +12,7 @@ import { Observable } from 'rxjs';
 export class Auth {
 
 
-    constructor(private http:HttpClient){}
+    constructor(private http:HttpClient ,private router:Router){}
 
     Signup(formdata:object){
      return  this.http.post(`${environment.baseURL}/users/signup`,formdata)
@@ -21,11 +22,9 @@ export class Auth {
         return this.http.post(`${environment.baseURL}/users/signin`,data)
     }
 
-    getMovies():Observable<any>{
-        return this.http.get("https://api.themoviedb.org/3/trending/all/day?api_key=48d62e7452a1f1a5e6018217ac27c50a&language=en-US")
+    SignOut(){
+        this.router.navigate(['/login']);
+        localStorage.removeItem('token');
+        localStorage.removeItem('user')
     }
-
-
-
 }
-// 

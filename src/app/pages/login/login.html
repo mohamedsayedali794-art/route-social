@@ -30,9 +30,12 @@
 
       <button
         type="submit"
-        class="w-full h-12 rounded-xl bg-[#0b1f5c] hover:bg-[#09194a] text-white text-sm font-semibold transition-colors"
+        class="w-full h-12 cursor-pointer rounded-xl bg-[#0b1f5c] hover:bg-[#09194a] text-white text-sm font-semibold transition-colors"
       >
         Login
+          @if (submitted) {
+         <i class="fa-spinner animate-spin fas"></i>
+       }
       </button>
     </form>
   </div>

@@ -1,26 +1,29 @@
 
-import { Component } from '@angular/core';
-
+import { Component, input, OnInit, signal } from '@angular/core';
+import { RouterLink, RouterLinkActive } from '@angular/router';
+import { initFlowbite } from 'flowbite';
+import { Auth } from '../../../core/services/Auth/auth';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
-  imports: [],
+  imports: [RouterLink, RouterLinkActive,CommonModule],
   selector: 'app-navbar',
   styleUrl: './navbar.css',
   templateUrl: './navbar.html',
 })
-export class Navbar {
-//   addUser!:any
+export class Navbar implements OnInit {
+
+  
+  constructor(private auth : Auth){}
+   flag= input.required<boolean>()
+ 
+   ngOnInit(): void {
+    initFlowbite();
+  }
 
 
-//   constructor(private auth:Auth){}
-
-
-//   getUser():void{
-//     this.auth.Signup().subscribe({
-//   next: (response: any) => {
-//     this.addUser = response.data;
-//   }
-// });
-//   }
+  LogOut(){
+   this.auth.SignOut();
+  }
 }

@@ -1,7 +1,7 @@
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
-import { Auth } from '../../../core/services/Auth/auth';
+import { Auth } from '../../core/services/Auth/auth';
 import { CommonModule, NgClass } from '@angular/common';
 
 @Component({
@@ -42,6 +42,16 @@ export class Signup implements OnInit {
     return this.signupForm.controls;
   }
 
+  showPass(element:HTMLInputElement):void{
+   if(element.type === "password"){
+    element.type ='text'
+   }
+   else{
+    element.type = 'password'
+   }
+
+  }
+
   passwordMatchValidator(group: FormGroup) {
     const password = group.get('password')?.value;
     const rePassword = group.get('rePassword')?.value;
@@ -61,16 +71,17 @@ export class Signup implements OnInit {
         console.log(res);
         this.addUser = res;
         this.signupForm.reset();
-        this.successMsg = 'تم إنشاء الحساب بنجاح';
         this.Sabmitted = false;
       },
       error: (err) => {
         console.log(err);
          this.Sabmitted = false;
          this.errorMsg = err.error?.message || 'حصل خطأ، حاول تاني';
+         this.successMsg = err.error?.message;
       },
+      complete:()=>{
+        this.Sabmitted = false;
+      }
     });
-
-    
   }
 }

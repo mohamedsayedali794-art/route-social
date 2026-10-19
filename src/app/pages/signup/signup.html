@@ -1,24 +1,11 @@
 <div class="min-h-screen flex items-center justify-center bg-slate-100 p-4">
   <div class="w-full max-w-sm bg-white rounded-3xl shadow-sm p-5">
-    <!-- Login / Register -->
-    <!-- <div class="flex bg-slate-100 rounded-xl p-1 mb-6">
-      <button type="button" routerLink="/login" class="flex-1 py-2 text-sm font-semibold text-slate-700 rounded-lg">
-        Login
-      </button>
-      <button type="button" routerLink="/signup" class="flex-1 py-2 text-sm font-bold text-[#0b1f5c] bg-white rounded-lg shadow">
-        Register
-      </button>
-    </div> -->
-
     <h2 class="text-2xl font-extrabold text-slate-900">Create a new account</h2>
     <p class="text-sm text-slate-500 mt-1 mb-5">It is quick and easy.</p>
 
     <form class="space-y-3" [formGroup]="signupForm" (ngSubmit)="register()">
       <!-- Full name -->
       <div>
-
-
-
         <div class="relative">
         <i class="fa-regular fa-user absolute start-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
         <input
@@ -167,11 +154,15 @@
         <div class="relative">
         <i class="fa-solid fa-key absolute start-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
         <input
+        #Pass
           type="password"
           formControlName="password"
           placeholder="Password"
           class="w-full h-12 ps-11 pe-4 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-[#0b1f5c] focus:ring-2 focus:ring-[#0b1f5c]/15"
         />
+        <span (click)="showPass(Pass)" class="absolute top-1/2 end-4 -translate-y-0.5 cursor-pointer">
+          <i  [ngClass]="Pass.type === 'password' ? ' fa-eye-slash':'fa-eye' " class="fas "></i>
+        </span>
       </div>
       @if (signupForm.get('password')?.invalid && signupForm.get('password')?.touched) {
              <div class="flex text-base text-red-800 rounded-xs bg-red-100 px-3 py-1">
@@ -207,9 +198,12 @@
 
       <button
         type="submit"
-        class="w-full h-12 rounded-xl bg-[#0b1f5c] hover:bg-[#09194a] text-white text-sm font-semibold transition-colors"
+        class="w-full h-12 rounded-xl cursor-pointer bg-[#0b1f5c] hover:bg-[#09194a] text-white text-sm font-semibold transition-colors"
       >
         Create account
+       @if (Sabmitted) {
+         <i class="fa-spinner animate-spin fas"></i>
+       }
       </button>
     </form>
   </div>

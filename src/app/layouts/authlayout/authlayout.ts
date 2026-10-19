@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { Navbar } from '../../shared/components/navbar/navbar';
 
 
 @Component({
-  imports: [RouterOutlet,RouterLink,RouterLinkActive],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive, Navbar],
   selector: 'app-authlayout',
   styleUrl: './authlayout.css',
   templateUrl: './authlayout.html',

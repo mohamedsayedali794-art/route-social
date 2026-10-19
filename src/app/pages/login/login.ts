@@ -1,6 +1,6 @@
 
 import { CommonModule } from '@angular/common';
-import { Auth } from './../../../core/services/Auth/auth';
+import { Auth } from '../../core/services/Auth/auth';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup ,ReactiveFormsModule,Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -30,7 +30,7 @@ ngOnInit(): void {
 }
 
 get f(){
-return  this.Loading.controls
+return  this.Loading.controls;
 }
 
  onSubmit(){
@@ -38,13 +38,13 @@ return  this.Loading.controls
     if(this.Loading.invalid){
       this.Loading.markAllAsTouched();
     return
-
   }
   this.auth.login(this.Loading.value).subscribe({
     next:(res:any)=>{
       console.log(res);
        localStorage.setItem('token', res.data.token);
-       this.router.navigate(['/mainlayout/home']).then(ok => console.log('navigated:', ok));
+       localStorage.setItem('user',res.data.user);
+       this.router.navigate(['/mainlayout/home']);
        this.successMsg= res.data.message
       this.Loading.reset();
       this.submitted=false
