@@ -43,7 +43,7 @@ return  this.Loading.controls;
     next:(res:any)=>{
       console.log(res);
        localStorage.setItem('token', res.data.token);
-       localStorage.setItem('user',res.data.user);
+       localStorage.setItem('user',JSON.stringify(res.data.user));
        this.router.navigate(['/mainlayout/home']);
        this.successMsg= res.data.message
       this.Loading.reset();

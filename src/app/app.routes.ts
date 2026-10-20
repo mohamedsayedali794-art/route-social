@@ -8,10 +8,11 @@ import { Profile } from './pages/profile/profile';
 import { authGuard } from './core/guards/auth-guard';
 import { Notifications } from './layouts/mainlayout/notifications/notifications';
 import { NotFound } from './shared/components/not-found/not-found';
+import { gusetGuard } from './core/guards/guset-guard';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'mainlayout', pathMatch: 'full' },
-    {path:'authlayout',component:Authlayout,children:[
+  { path: '', redirectTo: 'authlayout/login', pathMatch: 'full' },
+    {path:'authlayout',component:Authlayout,canActivate:[gusetGuard],children:[
         {path:'login',component:Login,title:'Route-social|login'},
         {path:'signup',component:Signup,title:'Route-social|signup'},
         { path: '', redirectTo: 'login', pathMatch: 'full' }

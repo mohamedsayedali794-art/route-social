@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Auth } from '../../core/services/Auth/auth';
 import { CommonModule, NgClass } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   imports: [ ReactiveFormsModule, CommonModule,NgClass ],
@@ -19,6 +20,7 @@ export class Signup implements OnInit {
   constructor(
     private fb: FormBuilder,
     private auth: Auth,
+    private router:Router
   ) {}
 
   ngOnInit(): void {
@@ -71,6 +73,7 @@ export class Signup implements OnInit {
         console.log(res);
         this.addUser = res;
         this.signupForm.reset();
+        this.router.navigate(['authlayout/login']);
         this.Sabmitted = false;
       },
       error: (err) => {

@@ -1,5 +1,5 @@
 
-import { Component, input, OnInit, signal } from '@angular/core';
+import { AfterViewInit, Component, input, OnInit, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { initFlowbite } from 'flowbite';
 import { Auth } from '../../../core/services/Auth/auth';
@@ -12,13 +12,13 @@ import { CommonModule } from '@angular/common';
   styleUrl: './navbar.css',
   templateUrl: './navbar.html',
 })
-export class Navbar implements OnInit {
+export class Navbar implements AfterViewInit {
 
   
   constructor(private auth : Auth){}
    flag= input.required<boolean>()
  
-   ngOnInit(): void {
+    ngAfterViewInit(): void {
     initFlowbite();
   }
 
